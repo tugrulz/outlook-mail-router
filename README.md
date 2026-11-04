@@ -1,6 +1,17 @@
 # Outlook Mail Router
 
-A small macOS app that opens `mailto:` links in Safari's Outlook web client instead of Apple Mail.
+A small macOS app that opens `mailto:` links in Outlook web instead of Apple Mail.
+
+By default it uses Safari. To use another browser, change `browserApp` in `router.applescript` to one of:
+
+- `"Safari"` (default)
+- `"Google Chrome"`
+- `"Firefox"`
+- `"Microsoft Edge"`
+- `"Brave Browser"`
+- `"Arc"`
+
+Change `composeURL` if your Outlook account is not a personal Outlook one.
 
 ## Setup
 
@@ -15,5 +26,3 @@ A small macOS app that opens `mailto:` links in Safari's Outlook web client inst
    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$HOME/Applications/Outlook Mail Router.app"
    ```
 4. Make it the default: System Settings → Desktop & Dock → Default email reader.
-
-The Outlook compose URL in `router.applescript` may need changing for work, university, or personal accounts.
