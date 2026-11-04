@@ -31,4 +31,4 @@ Change `inboxURL` if your Outlook account is not a personal Outlook one.
 
 ## Demo
 
-Full-quality video: [demo/mailto-demo.mp4](demo/mailto-demo.mp4)
+Full-quality video: [demo/final_mailto.mp4](demo/final_mailto.mp4)
