@@ -4,7 +4,7 @@
 
 A small macOS app that opens `mailto:` links in Outlook web instead of Apple Mail.
 
-It picks the service from the address: Gmail addresses (`@gmail.com`, `@googlemail.com`) open a Gmail compose window, and everything else opens the Outlook inbox. It uses the browser that was in front when you clicked the link. It finds that browser with `lsappinfo`, so it needs no extra macOS permissions. If no supported browser is found, it uses `browserApp`, which is Safari by default. To change the fallback, set `browserApp` in `router.applescript` to one of:
+By default it picks the service from the address: Gmail addresses (`@gmail.com`, `@googlemail.com`) open a Gmail compose window, and everything else opens the Outlook inbox. To always use one service, set `provider` in `router.applescript` to `"gmail"` or `"outlook"`. It uses the browser that was in front when you clicked the link. It finds that browser with `lsappinfo`, so it needs no extra macOS permissions. If no supported browser is found, it uses `browserApp`, which is Safari by default. To change the fallback, set `browserApp` in `router.applescript` to one of:
 
 - `"Safari"` (default)
 - `"Google Chrome"`
