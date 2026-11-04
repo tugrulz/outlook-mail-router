@@ -1,10 +1,11 @@
--- Opens Outlook web's inbox in the browser that was in front when the link was clicked.
--- If no supported browser is found, falls back to browserApp.
+-- Opens a mailto: link in Gmail when the address is a Gmail one, otherwise in Outlook web.
+-- The browser is the one that was in front when the link was clicked, or browserApp if none is found.
 -- Change browserApp to "Safari", "Google Chrome", "Firefox", "Microsoft Edge", "Brave Browser" or "Arc".
--- Change inboxURL if your Outlook account is not a personal Outlook one.
+-- Change outlookInboxURL if your Outlook account is not a personal Outlook one.
 
 property browserApp : "Safari"
-property inboxURL : "https://outlook.office.com/mail/"
+property outlookInboxURL : "https://outlook.office.com/mail/"
+property gmailComposeURL : "https://mail.google.com/mail/?view=cm&fs=1&to="
 
 on browserBehindRouter()
 	-- The router itself is in front when it is launched, so take the first browser in the
@@ -12,13 +13,22 @@ on browserBehindRouter()
 	return do shell script "lsappinfo visibleprocesslist | tr ':' '\\n' | grep -o '\"[^\"]*\"' | tr -d '\"' | grep -x -m1 -E 'Safari|Google_Chrome|Firefox|Microsoft_Edge|Brave_Browser|Arc' | tr '_' ' '"
 end browserBehindRouter
 
+on addressFrom(theURL)
+	-- Strip the mailto: scheme and any ?subject=... part, and lowercase the address.
+	set addr to do shell script "printf %s " & quoted form of theURL & " | sed -E 's/^mailto://I; s/\\?.*$//' | tr A-Z a-z"
+	return addr
+end addressFrom
+
 on open location theURL
 	set targetApp to browserApp
 	try
 		set targetApp to my browserBehindRouter()
 	end try
+	set addr to my addressFrom(theURL)
+	set targetURL to outlookInboxURL
+	if addr ends with "@gmail.com" or addr ends with "@googlemail.com" then set targetURL to gmailComposeURL & addr
 	tell application targetApp
 		activate
-		open location inboxURL
+		open location targetURL
 	end tell
 end open location
