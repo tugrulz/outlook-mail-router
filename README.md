@@ -2,7 +2,7 @@
 
 A small macOS app that opens `mailto:` links in Outlook web instead of Apple Mail.
 
-By default it uses Safari. To use another browser, change `browserApp` in `router.applescript` to one of:
+It opens the Outlook inbox in the browser that was frontmost when you clicked the link. If no supported browser is in front, it uses `browserApp`, which is Safari by default. To change the fallback, set `browserApp` in `router.applescript` to one of:
 
 - `"Safari"` (default)
 - `"Google Chrome"`
@@ -11,7 +11,7 @@ By default it uses Safari. To use another browser, change `browserApp` in `route
 - `"Brave Browser"`
 - `"Arc"`
 
-Change `composeURL` if your Outlook account is not a personal Outlook one.
+Change `inboxURL` if your Outlook account is not a personal Outlook one.
 
 ## Setup
 
