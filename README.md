@@ -26,3 +26,9 @@ Change `inboxURL` if your Outlook account is not a personal Outlook one.
    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$HOME/Applications/Outlook Mail Router.app"
    ```
 4. Make it the default: System Settings → Desktop & Dock → Default email reader.
+
+## Demo
+
+A short clip of the flow: the email link on tugrulcan.com is clicked, and Outlook opens in a new Chrome tab.
+
+[demo/mailto-demo.mp4](demo/mailto-demo.mp4)
